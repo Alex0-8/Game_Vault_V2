@@ -15,9 +15,15 @@ const Products = () => {
         dispatch(fetchGames());
     }, [dispatch]);
 
-    const getCoverUrl = (imageId) => `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`
+    const getCoverUrl = (cover) => {
+        if(cover?.image_id) return `https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`
 
-    if(!loading && list.length === 0) { // si el servidor no devuelve algo se muestra el componente con las tarjetas de respaldo
+        if(typeof cover === "string") return cover;
+
+        return "https://placehold.co/300x400?text=Sin+Imagen"
+    }
+
+    if(!loading && list === undefined) { // si el servidor no devuelve algo se muestra el componente con las tarjetas de respaldo
         return (
             <BackupProducts />
         )
@@ -30,7 +36,7 @@ const Products = () => {
         const newEntry = {
             id: game.id,
             title: game.name,
-            coverUrl: game.cover ? getCoverUrl(game.cover.image_id) : null,
+            coverUrl: game.cover ? getCoverUrl(game.cover) : null,
             price: game.finalPrice || game.basePrice,
         }
 
@@ -43,7 +49,7 @@ const Products = () => {
                 <Game key={game.id}>
                     {game.cover ? (
                         <img
-                            src={getCoverUrl(game.cover.image_id)}
+                            src={getCoverUrl(game.cover)}
                             alt={game.name} 
                         />
                     ) : (

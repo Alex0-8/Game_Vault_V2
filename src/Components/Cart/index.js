@@ -16,7 +16,6 @@ const Cart = ({ isOpen, onToggle }) => {
             <CartItemsSection>
                 {cartList.map((game) => (
                     <CartItem key={game.id}>
-                        {console.log("el gamecover: " + game.coverUrl)}
                         <img src={game.coverUrl === null ? `https://placehold.co/300x400?text=${'"Image Error"'}`: game.coverUrl} alt={game.title}/>
 
                         <p className="game-name">{game.title}</p>
