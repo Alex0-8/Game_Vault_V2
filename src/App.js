@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import Theme from "./theme";
+import { darkTheme, lightTheme } from "./theme";
 import GlobalStyle from "./theme/globalStyles.js";
 import Header from "./Components/header";
 import Banner from "./Components/Banner/index.js";
@@ -11,7 +11,10 @@ import { setCartAmount, setCartCounter, setCartItems } from "./redux/slices/game
 
 function App() {
   const [isOpen, setIsOpen] = useState(false) // guarda el estado de abierto y cerrado del carrito
+  const [isDarkMode, setIsDarkMode] = useState(true)
   const dispatch = useDispatch();
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode)
 
   useEffect(() => { // busca el item 'cart' dentro del local storage al entrar a la pagina
     const stored = JSON.parse(localStorage.getItem('cart')) || [];
@@ -30,9 +33,9 @@ function App() {
   }, [dispatch])
   
   return (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
-        <Header onToggle={() => setIsOpen(!isOpen)} />
+        <Header onToggle={() => setIsOpen(!isOpen)} switchTheme={toggleTheme} />
         <Banner />
         <Products />
         <Cart isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)}/>

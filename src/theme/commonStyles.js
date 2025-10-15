@@ -16,6 +16,7 @@ const ProductsSection = styled.section`
 `
 
 const Game = styled.article`
+    max-width: 270px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -23,37 +24,52 @@ const Game = styled.article`
     flex-wrap: wrap;
     align-content: center;
 
+    & div, img {
+        box-shadow: 0 0 15px rgba(255, 153, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
     & div {
         max-width: 270px;
-        background-color: #999999ff;
         padding: 7px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 5px;
         border-radius: 0 0 7px 7px;
-        transition: all .3s ease;
+        border-top: unset;
+        transition: background 0.4s ease, color 0.4s ease;
+        color: ${({theme}) => theme.txtSecondary};
+        background: linear-gradient(180deg, ${({theme}) => theme.surface} 0%, ${({theme}) => theme.surfaceSecondary} 100%);
 
         button {
-            width: 100px;
-            height: 35px;
-            background-color: #ef3fffff;
-            border-radius: 8px;
+            background: linear-gradient(90deg, #ff9900, #ff4d00);
+            color: #fff;
             border: none;
+            border-radius: 10px;
+            margin: 15px 15px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             cursor: pointer;
-
-            &:active{
-                transform: scale(.9);
-                background-color: #3fffdfff;
-            }
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            box-shadow: 0 0 12px rgba(255, 153, 0, 0.6);
 
             &:hover {
-                background-color: #c760f7ff;
+                box-shadow: 0 0 20px rgba(255, 77, 0, 0.8);
+                transform: scale(1.05);
+            }
+
+            &:active {
+                transform: scale(0.97);
             }
         }
     }
 
     & img {
+        border-bottom: unset;
         max-width: 270px;
         object-fit: cover;
         cursor: pointer;
@@ -61,8 +77,15 @@ const Game = styled.article`
     }
 
     &:hover{
+        transform: translateY(-6px) scale(1.03);
+
         & > div{
-            background-color: #2b9aceff;
+            background: linear-gradient(180deg, #00e5ff80 0%, #001f3f66 100%);
+            color: ${({theme}) => theme.txtPrimary};
+        }
+
+        & > div, img{
+            box-shadow: 0 0 25px rgba(255, 77, 0, 0.5);
         }
     }
 `

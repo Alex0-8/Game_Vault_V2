@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const HeaderSection = styled.header`
     width: 100%;
     padding: 15px 25px;
-    background-color: ${props => props.theme.colors.darkMode.bgPrimary};
+    background-color: ${({theme}) => theme.backgroundSecondary};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,6 +35,10 @@ const HeaderSection = styled.header`
 
         &:hover{
             transform: scale(1.2);
+        }
+
+        &:active{
+            transform: scale(.9);
         }
     }
 

@@ -5,10 +5,12 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         padding: 0;
         margin: 0;
+
+        transition: all .5s ease;
     }
 
     body{
-        background-color: #222;
+        background-color: ${({theme}) => theme.backgroundPrimary};
     }
 
     .server-error{
