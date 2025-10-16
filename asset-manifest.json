@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/Alex0-8/Game_Vault_V2/static/js/main.5c3b0809.js",
-    "static/media/logo.webp": "/Alex0-8/Game_Vault_V2/static/media/logo.5ec2449fd68133b55780.webp",
-    "static/media/banner.webp": "/Alex0-8/Game_Vault_V2/static/media/banner.bfa07cc61ea1c2ecf9dd.webp",
-    "static/media/loading5.gif": "/Alex0-8/Game_Vault_V2/static/media/loading5.3f25f2979afa8ca164df.gif",
-    "static/media/menu.png": "/Alex0-8/Game_Vault_V2/static/media/menu.06ad7dc63499747232fb.png",
-    "index.html": "/Alex0-8/Game_Vault_V2/index.html",
-    "main.5c3b0809.js.map": "/Alex0-8/Game_Vault_V2/static/js/main.5c3b0809.js.map"
+    "main.js": "/Game_Vault_V2/static/js/main.6cfc84ed.js",
+    "static/media/logo.webp": "/Game_Vault_V2/static/media/logo.5ec2449fd68133b55780.webp",
+    "static/media/banner.webp": "/Game_Vault_V2/static/media/banner.bfa07cc61ea1c2ecf9dd.webp",
+    "static/media/loading5.gif": "/Game_Vault_V2/static/media/loading5.3f25f2979afa8ca164df.gif",
+    "static/media/menu.png": "/Game_Vault_V2/static/media/menu.06ad7dc63499747232fb.png",
+    "index.html": "/Game_Vault_V2/index.html",
+    "main.6cfc84ed.js.map": "/Game_Vault_V2/static/js/main.6cfc84ed.js.map"
   },
   "entrypoints": [
-    "static/js/main.5c3b0809.js"
+    "static/js/main.6cfc84ed.js"
   ]
 }
