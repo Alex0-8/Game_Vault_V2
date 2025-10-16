@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+🕹️ GameVault (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GameVault is a work-in-progress application for exploring and managing video games, built with React and Redux Toolkit.
+It serves as a modern, modular replacement for the original HTML+SASS version, now featuring a fully redesigned neon/arcade.
 
-## Available Scripts
+🔗 Live Demo: [GameVault](https://alex0-8.github.io/Game_Vault_V2/)
 
-In the project directory, you can run:
+🔹 Current Status
 
-### `npm start`
+- Integrated with the IGDB API to fetch game information.
+- Added backup APIs (RAWG + CheapShark) that automatically take over when the main IGDB server is offline.
+- The app now includes a resilient fallback chain:
+- IGDB (local server)
+- RAWG + CheapShark (for game data and pricing)
+- Local mock generator (as last resort)
+- Fully restyled with a gaming / neon style:
+- Neon orange (#ff9900 / #ff4d00) as the main accent.
+- Electric cyan and dark blue contrasts.
+- Soft glows, smooth hover animations.
+- Base sections like Home and Cart are functional, while others are still under development.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🚧 Upcoming Improvements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Fully detailed game pages with reviews, genres, and prices.
+- Advanced filtering and search functionality.
+- Global cart persistence and optional user authentication.
+- Further UI/UX enhancements and animations for a smoother experience.
 
-### `npm test`
+⚙️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Frontend: React, Redux Toolkit, Styled Components
+- Styling: SASS/SCSS
+- APIs: IGDB (local), RAWG, CheapShark
+- Other: Axios for API calls, custom hooks, localStorage cart handling
+- Deployment: GitHub Pages
 
-### `npm run build`
+🧩 Architecture Notes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The fetchGames thunk implements a multi-layer API fallback:
+- If IGDB fails → attempts to fetch data from RAWG.
+- Then fetches pricing from CheapShark.
+- If both fail, it generates fake prices and discounts locally to keep the UI consistent.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Last updated: October 16, 2025
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+--------------------------------------------------------------------------------------------
 
-### `npm run eject`
+🕹️ GameVault (React)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+GameVault es una aplicación en desarrollo para explorar y gestionar videojuegos, construida con React y Redux Toolkit.
+Es una versión moderna y modular del proyecto original hecho en HTML+SASS, ahora con una estética tipo neón / arcade completamente rediseñada.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🔗 Versión en línea: [GameVault](https://alex0-8.github.io/Game_Vault_V2/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🔹 Estado Actual
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Integración con la API de IGDB para obtener información de videojuegos.
+- Se añadieron APIs de respaldo (RAWG + CheapShark) que se activan automáticamente cuando el servidor principal no responde.
+- El sistema de carga usa una cadena de respaldo:
+- IGDB (servidor local)
+- RAWG + CheapShark (para datos y precios)
+- Generador local de tarjetas (último recurso)
+- Se aplicó un nuevo diseño visual estilo gaming / neón:
+- Naranja neón (#ff9900 / #ff4d00) como color principal.
+- Contrastes en cian eléctrico y azul oscuro.
+- Sombras brillantes, animaciones suaves en hover.
+- Secciones como Inicio y Carrito son funcionales, mientras que otras siguen en desarrollo.
 
-## Learn More
+🚧 Próximas Mejoras
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Páginas de detalles de juegos con reseñas, géneros y precios.
+- Búsqueda y filtrado avanzado en el catálogo.
+- Persistencia global del carrito y posible autenticación de usuario.
+- Más mejoras de UI/UX y animaciones para una experiencia más fluida.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+⚙️ Stack Tecnológico
 
-### Code Splitting
+- Frontend: React, Redux Toolkit, Styled Components
+- Estilos: SASS/SCSS
+- APIs: IGDB (local), RAWG, CheapShark
+- Otros: Axios, hooks personalizados, manejo de carrito con localStorage
+- Despliegue: GitHub Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🧩 Notas Técnicas
 
-### Analyzing the Bundle Size
+- El thunk fetchGames implementa una cadena de respaldo entre APIs:
+- Si IGDB falla → intenta obtener datos desde RAWG.
+- Luego busca precios en CheapShark.
+- Si ambas fallan, genera precios y descuentos falsos localmente para mantener la interfaz funcional.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Última actualización: 13 de octubre de 2025
