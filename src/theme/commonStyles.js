@@ -13,6 +13,15 @@ const ProductsSection = styled.section`
         width: 75%;
         margin: 0 auto;
     }
+
+    @media screen and (max-width: 750px) {
+        grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+        justify-items: center;
+    }
+
+    @media screen and (max-width: 400px) {
+        width: 100%;
+    }
 `
 
 const Game = styled.article`
@@ -57,10 +66,10 @@ const Game = styled.article`
             text-transform: uppercase;
             box-shadow: 0 0 12px rgba(255, 153, 0, 0.6);
 
-            &:hover {
+            /* &:hover {
                 box-shadow: 0 0 20px rgba(255, 77, 0, 0.8);
                 transform: scale(1.05);
-            }
+            } */
 
             &:active {
                 transform: scale(0.97);
@@ -76,16 +85,43 @@ const Game = styled.article`
         border-radius: 7px 7px 0 0;
     }
 
-    &:hover{
-        transform: translateY(-6px) scale(1.03);
-
-        & > div{
-            background: linear-gradient(180deg, #00e5ff80 0%, #001f3f66 100%);
-            color: ${({theme}) => theme.txtPrimary};
+    /*hover para pc*/
+    @media (hover: hover) and (pointer: fine){
+        &:hover {
+            transform: translate(-6px) scale(1.03);
+        
+            & > div {
+                background: linear-gradient(180deg, #00e5ff80 0%, #001f3f66 100%);
+                color: ${({theme}) => theme.txtPrimary};
+            }
+        
+            & > div, img {
+                box-shadow: 0 0 25px rgba(255, 77, 0, 0.5);
+            }
+        }
+    
+        & div button:hover{
+            box-shadow: 0 0 20px rgba(255, 77, 0, 0.8);
+            transform: scale(1.05);
         }
 
-        & > div, img{
-            box-shadow: 0 0 25px rgba(255, 77, 0, 0.5);
+        & div button:active{
+            transform: scale(0.9);
+        }
+    }
+
+    /*hover tactil*/
+    @media (pointer: coarse){
+        & div button:active{
+            transform: scale(0.9);
+            box-shadow: 0 0 15px rgba(255, 153, 0, 0.6);
+        }
+
+        &:hover{
+            transform: scale(1.05);
+            & > div, img {
+                box-shadow: 0 0 18px rgba(0, 229, 255, 0.5);
+            }
         }
     }
 `

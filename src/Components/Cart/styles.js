@@ -46,9 +46,10 @@ const CartSection = styled.section`
         }
     }
 
-    @media (max-width: 600px){
+    transition: all 2s ease;
+
+    @media screen and (max-width: 750px) {
         width: 100%;
-        border-radius: 0;
     }
 `
 //encabezado del carrito
@@ -79,12 +80,6 @@ const CartInfo = styled.div`
         cursor: pointer;
         transition: all .3s ease;
         box-shadow: 0 0 8px rgba(255, 153, 0, 0.5);
-
-        &:hover{
-            background: linear-gradient(90deg, #ff9900, #ff4d00);
-            color: ${({theme}) => theme.txtPrimary};
-            box-shadow: 0 0 15px rgba(255, 77, 0, 0.6), 0 0 25px rgba(255, 153, 0, 0.6);
-        }
     }
 
     & i {
@@ -92,8 +87,34 @@ const CartInfo = styled.div`
         transition: transform .3s ease, color .3s ease;
         font-size: 1.4rem;
         color: #ff9900;
+    }
 
-        &:hover{
+    /*hover en pc*/
+    @media (hover: hover) and (pointer: fine) {
+        & > button:hover {
+            background: linear-gradient(90deg, #ff9900, #ff4d00);
+            color: ${({theme}) => theme.txtPrimary};
+            box-shadow: 0 0 1px rgba(255,77, 0, 0.6), 0 0 25px rgba(255, 153, 0, 0.6);
+        }
+
+        & i:hover {
+            transform: scale(1.2);
+            color: #ff4d00;
+        }
+
+        & i:active{
+            transform: scale(0.9);
+        }
+    }
+
+    /*hover en movil*/
+    @media (pointer: coarse){
+        & > button:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 10px rgba(255, 153, 0, 0.6);
+        }
+
+        & i:active {
             transform: scale(1.2);
             color: #ff4d00;
         }
@@ -110,7 +131,7 @@ const CartItemsSection = styled.div`
     backdrop-filter: blur(8px);
     overflow-y: auto;
     margin-top: 15px;
-    padding: 10px;
+    padding: 10px 0;
     box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.2);
 
     &::-webkit-scrollbar {
@@ -127,6 +148,7 @@ const CartItemsSection = styled.div`
 
 //cada item del carrito
 const CartItem = styled.div`
+    min-width: 315px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
@@ -134,10 +156,6 @@ const CartItem = styled.div`
     gap: 8px;
     padding: 12px;
     transition: background .3s ease;
-
-    &:hover{
-        background: ${({theme}) => theme.cartItemHoverGradient};
-    }
 
     img {
         border-radius: 7px;
@@ -153,12 +171,6 @@ const CartItem = styled.div`
         transition: all .3s ease;
         background: ${({theme}) => theme.cartButtonBackground};
         color: ${({theme}) => theme.txtPrimary};
-
-        &:hover{
-            transform: scale(1.05);
-            background: linear-gradient(90deg, #ff9900, #ff4d00);
-            box-shadow: 0 0 10px rgba(255, 77, 0, 0.6);
-        }
     }
 
     .game-name{
@@ -168,6 +180,36 @@ const CartItem = styled.div`
         white-space: nowrap;
         color: ${({theme}) => theme.txtSecondary};
         font-weight: 600;
+    }
+
+    @media screen and (max-width: 390px) {
+        width: 340px;
+    }
+
+    /*hover en pc*/
+    @media (hover:hover) and (pointer: fine) {
+        button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(90deg, #ff9900, #ff4d00);
+            box-shadow: 0 0 10px rgba(255, 77, 0, 0.6);
+        }
+
+        button:active{
+            transform: scale(0.9);
+        }
+    }
+
+    /*hover en movil*/
+    @media (pointer: coarse){
+        button:active {
+            transform: scale(0.95);
+            background: linear-gradient(90deg, #ff9900, #ff4d00);
+            box-shadow: 0 0 10 rgba(255, 77, 0, 0.6);
+        }
+    }
+
+    &:hover {
+        background: ${({theme}) => theme.cartItemHoverGradient};
     }
 `
 
