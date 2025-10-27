@@ -5,11 +5,12 @@ import { useCart } from "../hooks/useCart";
 import BackupProducts from "../BackupProducts";
 import { Game, ProductsSection } from "../../theme/commonStyles";
 import loadingImg from '../../Img/loading5.gif'
+import SearchBar from "../SearchBar";
 
 const Products = () => {
     const dispatch = useDispatch();
     const { addToCart } = useCart();
-    const { list, loading, error } = useSelector((state) => state.games);
+    const { searchResults, list, loading, searchLoading, error, searchError } = useSelector((state) => state.games);
 
     useEffect(() => { 
         dispatch(fetchGames());
@@ -29,8 +30,8 @@ const Products = () => {
         )
     }
     
-    if (loading) return <ProductsSection><img src={loadingImg} alt="Cargando..." className="loading-img" /></ProductsSection>
-    if (error) return <p>Error: {error}</p>
+    if (loading  || searchLoading) return <ProductsSection><img src={loadingImg} alt="Cargando..." className="loading-img" /></ProductsSection>
+    if (error || searchError) return <p>Error: {error}</p>
 
     const handleAddToCart = (game) => { // funcion para añadir los productos al carrito
         const newEntry = {
@@ -45,7 +46,8 @@ const Products = () => {
 
     return(
         <ProductsSection>
-            {list.map((game) => (
+            <SearchBar />
+            {(searchResults.length > 0 ? searchResults : list).map((game) => (
                 <Game key={game.id}>
                     {game.cover ? (
                         <img

@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 //estilos que se usan en más de 1 componente
 const ProductsSection = styled.section`
+    position: relative;
     width: 80%;
-    margin: 0 auto 35px;
+    margin: 75px auto 35px;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

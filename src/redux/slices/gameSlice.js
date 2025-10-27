@@ -100,6 +100,42 @@ export const fetchGames = createAsyncThunk("games/fetchGames", async () => {
 
 })
 
+export const fetchSearchResults = createAsyncThunk( //fetch para el buscador
+    "games/fetchSearchResults",
+    async (query) => {
+        if (!query) return [];
+
+        try{ // primero intenta buscar por igdb
+            const igdbResponse = await axios.get(`http://localhost:5000/games/search/${query}`);
+            const igdbResults = igdbResponse.data;
+            if (igdbResults.length > 0) return igdbResults;
+        }catch(err){
+            console.warn("No se pudo buscar en IGDB: ", err.message)
+        }
+
+        try{ // si igdb no funciona buscara por rawg
+            const rawgResponse = await axios.get(`${RAWG_BASE_URL}/games`, {
+                params: { key: RAWG_KEY, search: query, page_size: 18},
+            });
+
+            const results = rawgResponse.data.results.map((game) => ({
+                id: game.id,
+                name: game.name,
+                cover: game.background_image,
+                basePrice: (Math.random() * (70 - 10) + 10).toFixed(2),
+                discount: 0,
+                finalPrice: (Math.random() * (70 - 10) + 10).toFixed(2)
+            }));
+
+            console.log(`Resultados de Rawg: ${results.length}`)
+            return results;
+        }catch(err){
+            console.error(`Error al buscar ${query}: ${err.message}`)
+            throw err;
+        }
+    }
+)
+
 const gameSlice = createSlice({
     name: "games",
     initialState: {
@@ -109,6 +145,9 @@ const gameSlice = createSlice({
         cartList: [],
         cartCount: 0,
         cartAmount: 0,
+        searchResults: [],
+        searchLoading: false,
+        searchError: null,
     },
     reducers: {
         setCartItems: (state, action) => {
@@ -133,6 +172,18 @@ const gameSlice = createSlice({
             .addCase(fetchGames.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
+            })
+            .addCase(fetchSearchResults.pending, (state) => { // extrareducers del buscador
+                state.searchLoading = true;
+                state.searchError = null;
+            })
+            .addCase(fetchSearchResults.fulfilled, (state, action) => {
+                state.searchLoading = false;
+                state.searchResults = action.payload;
+            })
+            .addCase(fetchSearchResults.rejected, (state, action) => {
+                state.searchLoading = false;
+                state.searchError = action.error.message;
             })
     }
 })

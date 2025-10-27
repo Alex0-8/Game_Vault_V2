@@ -17,6 +17,16 @@ export const darkTheme = {
     cartItemBackground: "rgba(20, 20, 30, 0.84)",
     cartItemHoverGradient: "linear-gradient(90deg, rgba(255, 77, 0, 0.1) 0%, rgba(0, 229, 255, 0.1) 100%)",
     cartButtonBackground: "rgba(255, 77, 0, 0.15)",
+
+    //estilos del buscador
+    searchBkg: "rgba(0, 31, 63, 0.8)",
+    searchBorder: "rgba(255, 153, 0, 0.5)",
+    searchBoxShadow: "0 0 12px rgba(255, 77, 0, 0.5)",
+    searchIcon: "#ff9900",
+    searchIconHover: "#ff4d00",
+    searchPlaceholder: "rgba(255, 255, 255, 0.6)",
+    searchButtonGradient: "linear-gradient(90deg, #ff4d00, #ff9900)",
+    searchButtonShadow: "0 0 12px rgba(255, 77, 0, 0.8)"
 }
 
 export const lightTheme = { // colores del modo dia
@@ -38,4 +48,14 @@ export const lightTheme = { // colores del modo dia
     cartItemBackground: "rgba(240, 240, 245, 0.85)",
     cartItemHoverGradient: "linear-gradient(90deg, rgba(255, 153, 0, 0.1) 0%, rgba(0, 200, 255, 0.1) 100%)",
     cartButtonBackground: "rgba(255, 153, 0, 0.2)",
+
+    //estilos del buscador
+    searchBkg: "rgba(255, 255, 255, 0.9)",
+    searchBorder: "rgba(255, 153, 0, 0.6)",
+    searchBoxShadow: "0 0 10px rgba(255, 153, 0, 0.4)", 
+    searchIcon: "#ff9900", 
+    searchIconHover: "#ff4d00",
+    searchPlaceholder: "rgba(0, 0, 0, 0.4)", 
+    searchButtonGradient: "linear-gradient(90deg, #ff9900, #ffcc66)",
+    searchButtonShadow: "0 0 10px rgba(255, 153, 0, 0.6)",
 }

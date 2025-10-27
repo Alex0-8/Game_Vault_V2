@@ -17,8 +17,6 @@ const HeaderSection = styled.header`
 
         img {
             width: 100%;
-            
-            
         }
 
         div{
@@ -43,7 +41,7 @@ const HeaderSection = styled.header`
     }
 
     & img:nth-child(2){
-        width: 100px;
+        width: clamp(3.75rem, 2.634rem + 2.976vw, 5.313rem);
     }
 
     & .number-styles{
