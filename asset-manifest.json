@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/Game_Vault_V2/static/js/main.255eacb0.js",
+    "main.js": "/Game_Vault_V2/static/js/main.e67636e7.js",
     "static/media/logo.webp": "/Game_Vault_V2/static/media/logo.5ec2449fd68133b55780.webp",
     "static/media/banner.webp": "/Game_Vault_V2/static/media/banner.bfa07cc61ea1c2ecf9dd.webp",
     "static/media/loading5.gif": "/Game_Vault_V2/static/media/loading5.3f25f2979afa8ca164df.gif",
     "static/media/menu.png": "/Game_Vault_V2/static/media/menu.06ad7dc63499747232fb.png",
     "index.html": "/Game_Vault_V2/index.html",
-    "main.255eacb0.js.map": "/Game_Vault_V2/static/js/main.255eacb0.js.map"
+    "main.e67636e7.js.map": "/Game_Vault_V2/static/js/main.e67636e7.js.map"
   },
   "entrypoints": [
-    "static/js/main.255eacb0.js"
+    "static/js/main.e67636e7.js"
   ]
 }
