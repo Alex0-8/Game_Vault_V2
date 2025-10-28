@@ -13,10 +13,11 @@ It serves as a modern, modular replacement for the original HTML+SASS version, n
 - IGDB (local server)
 - RAWG + CheapShark (for game data and pricing)
 - Local mock generator (as last resort)
-- Fully restyled with a gaming / neon style:
+- Fully restyled with a gaming / neon style.
 - Neon orange (#ff9900 / #ff4d00) as the main accent.
-- Electric cyan and dark blue contrasts.
-- Soft glows, smooth hover animations.
+- Added responsive design, optimized layout for mobile and desktop.
+- Hover effects adapted to work differently on desktop and touch devices.
+- Added a search bar component that allows users to find games dynamically.
 - Base sections like Home and Cart are functional, while others are still under development.
 
 🚧 Upcoming Improvements
@@ -36,12 +37,14 @@ It serves as a modern, modular replacement for the original HTML+SASS version, n
 
 🧩 Architecture Notes
 
-- The fetchGames thunk implements a multi-layer API fallback:
+The fetchGames thunk implements a multi-layer API fallback:
 - If IGDB fails → attempts to fetch data from RAWG.
 - Then fetches pricing from CheapShark.
 - If both fail, it generates fake prices and discounts locally to keep the UI consistent.
 
-Last updated: October 16, 2025
+The new fetchSearchResults thunk powers the search bar with the same fallback logic, ensuring seamless functionality even when external APIs are unavailable.
+
+Last updated: October 27, 2025
 
 --------------------------------------------------------------------------------------------
 
@@ -62,8 +65,8 @@ Es una versión moderna y modular del proyecto original hecho en HTML+SASS, ahor
 - Generador local de tarjetas (último recurso)
 - Se aplicó un nuevo diseño visual estilo gaming / neón:
 - Naranja neón (#ff9900 / #ff4d00) como color principal.
-- Contrastes en cian eléctrico y azul oscuro.
-- Sombras brillantes, animaciones suaves en hover.
+- Se añadió diseño responsive y ajustes de hover adaptados a PC y dispositivos móviles.
+- Nuevo componente de barra de búsqueda, que permite encontrar juegos dinámicamente
 - Secciones como Inicio y Carrito son funcionales, mientras que otras siguen en desarrollo.
 
 🚧 Próximas Mejoras
@@ -83,9 +86,11 @@ Es una versión moderna y modular del proyecto original hecho en HTML+SASS, ahor
 
 🧩 Notas Técnicas
 
-- El thunk fetchGames implementa una cadena de respaldo entre APIs:
+El thunk fetchGames implementa una cadena de respaldo entre APIs:
 - Si IGDB falla → intenta obtener datos desde RAWG.
 - Luego busca precios en CheapShark.
 - Si ambas fallan, genera precios y descuentos falsos localmente para mantener la interfaz funcional.
 
-Última actualización: 13 de octubre de 2025
+El nuevo thunk fetchSearchResults impulsa la barra de búsqueda con la misma lógica de respaldo, garantizando que siga funcionando incluso sin conexión al servidor principal
+
+Última actualización: 27 de octubre de 2025
