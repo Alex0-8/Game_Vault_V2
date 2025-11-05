@@ -34,6 +34,20 @@ const Game = styled.article`
     flex-wrap: wrap;
     align-content: center;
 
+    .game-title{
+        cursor: pointer;
+        transition: all .3s ease;
+
+        &:hover{
+            color: ${({theme}) => theme.txtSecondary};
+            transform: scale(1.05);
+        }
+
+        &:active{
+            transform: scale(0.8);
+        }
+    }
+
     & div, img {
         box-shadow: 0 0 15px rgba(255, 153, 0, 0.2);
         transition: transform 0.3s ease, box-shadow 0.3s ease;

@@ -136,6 +136,63 @@ export const fetchSearchResults = createAsyncThunk( //fetch para el buscador
     }
 )
 
+//thunk para conseguir los detalles de un juego al hacer clic en una tarjeta
+export const fetchGameDetails = createAsyncThunk("games/fetchGameDetails", async (id) => {
+    try{ //intenta conseguir los datos de igdb
+        const igdbResponse = await axios.get(`http://localhost:5000/games/${id}`);
+        if(igdbResponse.data) {
+            return igdbResponse.data
+        }
+    }catch{
+        console.warn("IGDB nos disponible, usando respaldo...")
+    }
+
+    try{ // inenta conseguir los datos desde RAWG
+        const rawgResponse = await axios.get(`${RAWG_BASE_URL}/games/${id}`, {
+            params: { key: RAWG_KEY }
+        });
+
+        const game = rawgResponse.data;
+
+        //busca precio en CheapShark
+        const priceResponse = await axios.get(`${CHEAPSHARK_BASE_URL}/games`, {
+            params: {title: game.name},
+        })
+
+        const priceData = priceResponse.data[0];
+        const basePrice = priceData?.cheapest
+            ? parseFloat(priceData.cheapest).toFixed(2)
+            : (Math.random() * (70 - 10) + 10).toFixed(2);
+
+        const hasDiscount = Math.random() < 0.3;
+        const discount = hasDiscount
+            ? Math.floor(Math.random() * (50 - 10 + 1)) + 10
+            : 0;
+
+        const finalPrice = hasDiscount
+            ? (basePrice - (basePrice * discount) / 100).toFixed(2)
+            : basePrice;
+
+        console.log("trailer= ", game.clip?.clip)
+        console.log("generos: ", game.genres)
+        return {
+            id: game.id,
+            title: game.name,
+            description: game.description_raw,
+            genres: game.genres?.map((g) => g.name),
+            platforms: game.platforms?.map((p) => p.platform.name),
+            trailer: game.clip?.clip || null,
+            coverUrl: game.background_image,
+            basePrice,
+            discount,
+            finalPrice,
+        }
+    }catch(err){
+        console.error("No se pudo obtener detalles: ", err.message)
+        throw err
+    }
+})
+
 const gameSlice = createSlice({
     name: "games",
     initialState: {
@@ -148,6 +205,8 @@ const gameSlice = createSlice({
         searchResults: [],
         searchLoading: false,
         searchError: null,
+        selectedGame: null,
+        detailsLoading: false,
     },
     reducers: {
         setCartItems: (state, action) => {
@@ -158,6 +217,9 @@ const gameSlice = createSlice({
         },
         setCartAmount: (state, action) => {
             state.cartAmount = action.payload
+        },
+        clearSelectedGame: (state) => {
+            state.selectedGame = null
         }
     },
     extraReducers: (builder) => {
@@ -185,9 +247,20 @@ const gameSlice = createSlice({
                 state.searchLoading = false;
                 state.searchError = action.error.message;
             })
+            .addCase(fetchGameDetails.pending, (state) => {// extra reducers de los detalles
+                state.detailsLoading = true;
+            })
+            .addCase(fetchGameDetails.fulfilled, (state, action) => {
+                state.detailsLoading = false;
+                state.selectedGame = action.payload;
+            })
+            .addCase(fetchGameDetails.rejected, (state, action) => {
+                state.detailsLoading = false;
+                state.error = action.payload;
+            })
     }
 })
 
-export const { setCartItems, setCartCounter, setCartAmount } = gameSlice.actions;
+export const { setCartItems, setCartCounter, setCartAmount, clearSelectedGame } = gameSlice.actions;
 
 export default gameSlice.reducer;

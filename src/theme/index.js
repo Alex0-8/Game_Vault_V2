@@ -26,7 +26,16 @@ export const darkTheme = {
     searchIconHover: "#ff4d00",
     searchPlaceholder: "rgba(255, 255, 255, 0.6)",
     searchButtonGradient: "linear-gradient(90deg, #ff4d00, #ff9900)",
-    searchButtonShadow: "0 0 12px rgba(255, 77, 0, 0.8)"
+    searchButtonShadow: "0 0 12px rgba(255, 77, 0, 0.8)",
+
+    //estilos del modal de detalles
+    modalBackdrop: "rgba(0, 0, 0, 0.75)",
+    modalBkg: "linear-gradient(180deg, #0b0b0f 0%, #1c1c27 100%)",
+    modalBorder: "rgba(255, 153, 0, 0.4)",
+    modalBoxShadow: "0 0 25px rgba(0, 229, 255, 0.3)",
+    modalButtonGradient: "linear-gradient(90deg, #00e5ff80, #ff9900)",
+    modalButtonHover: "linear-gradient(90deg, #ff4d00, #00e5ff)",
+    modalTextGlow: "0 0 6px rgba(255, 153, 0, 0.6)",
 }
 
 export const lightTheme = { // colores del modo dia
@@ -58,4 +67,13 @@ export const lightTheme = { // colores del modo dia
     searchPlaceholder: "rgba(0, 0, 0, 0.4)", 
     searchButtonGradient: "linear-gradient(90deg, #ff9900, #ffcc66)",
     searchButtonShadow: "0 0 10px rgba(255, 153, 0, 0.6)",
+
+    //estilos del modal de detalles
+    modalBackdrop: "rgba(0, 0, 0, 0.45)",
+    modalBkg: "linear-gradient(180deg, #f9f9fb 0%, #e8e8ee 100%)",
+    modalBorder: "rgba(255, 153, 0, 0.4)",
+    modalBoxShadow: "0 0 25px rgba(255, 153, 0, 0.3)",
+    modalButtonGradient: "linear-gradient(90deg, #ff9900, #ffcc66)",
+    modalButtonHover: "linear-gradient(90deg, #ffcc66, #ff9900)",
+    modalTextGlow: "0 0 4px rgba(255, 153, 0, 0.5)",
 }

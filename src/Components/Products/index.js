@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchGames } from "../../redux/slices/gameSlice";
+import { fetchGameDetails, fetchGames } from "../../redux/slices/gameSlice";
 import { useCart } from "../hooks/useCart";
 import BackupProducts from "../BackupProducts";
 import { Game, ProductsSection } from "../../theme/commonStyles";
 import loadingImg from '../../Img/loading5.gif'
 import SearchBar from "../SearchBar";
+import GamesDetailsModal from "../GameDetailsModal";
 
 const Products = () => {
     const dispatch = useDispatch();
     const { addToCart } = useCart();
-    const { searchResults, list, loading, searchLoading, error, searchError } = useSelector((state) => state.games);
+    const { searchResults, list, loading, searchLoading, detailsLoading, error, searchError } = useSelector((state) => state.games);
 
     useEffect(() => { 
         dispatch(fetchGames());
@@ -30,8 +31,8 @@ const Products = () => {
         )
     }
     
-    if (loading  || searchLoading) return <ProductsSection><img src={loadingImg} alt="Cargando..." className="loading-img" /></ProductsSection>
-    if (error || searchError) return <p>Error: {error}</p>
+    if (loading  || searchLoading || detailsLoading) return <ProductsSection><img src={loadingImg} alt="Cargando..." className="loading-img" /></ProductsSection>
+    if (error != null || searchError) return <ProductsSection>Error: {error}</ProductsSection>
 
     const handleAddToCart = (game) => { // funcion para añadir los productos al carrito
         const newEntry = {
@@ -42,6 +43,10 @@ const Products = () => {
         }
 
         addToCart(newEntry)
+    }
+
+    const handleCardClick = (gameId) => {
+        dispatch(fetchGameDetails(gameId))
     }
 
     return(
@@ -62,7 +67,7 @@ const Products = () => {
                     )}
 
                     <div>
-                        <p>{game.name}</p>
+                        <p onClick={() => handleCardClick(game.id)} className="game-title">{game.name}</p>
                         
                         {game.discount > 0 ? (
                             <>
@@ -78,6 +83,7 @@ const Products = () => {
                     </div>
                 </Game>
             ))}
+            <GamesDetailsModal />
         </ProductsSection>
     )
 }
