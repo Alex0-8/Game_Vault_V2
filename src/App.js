@@ -35,7 +35,7 @@ function App() {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
-        <Header onToggle={() => setIsOpen(!isOpen)} switchTheme={toggleTheme} />
+        <Header onToggle={() => setIsOpen(!isOpen)} switchTheme={toggleTheme} isDark={isDarkMode} />
         <Banner />
         <Products />
         <Cart isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)}/>

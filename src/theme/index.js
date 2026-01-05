@@ -8,6 +8,8 @@ export const darkTheme = {
     boxShadow: "0 2px 4px rgba(214, 214, 214, 0.62)",
     borderSecondary: "#ff3fdf",
     btn: "#3fffb5ff",
+    icon: '#ffff00',
+    iconHover: '#ffa500',
 
     //estilos del carrito
     cartBkg: "linear-gradient(180deg, #0b0b0f 0%, #12121a 100%)",
@@ -48,6 +50,8 @@ export const lightTheme = { // colores del modo dia
     boxShadow: "0 2px 4px rgba(36, 36, 36, 0.62)",
     borderSecondary: "#aa0055",
     btn: "#3fff3fff",
+    icon: '#000',
+    iconHover: '#ff4d00',
 
     //estilos del carrito
     cartBkg: "linear-gradient(180deg, #f2f2f5 0%, #e6e6eb 100%)",
