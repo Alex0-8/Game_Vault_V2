@@ -8,12 +8,14 @@ import loadingImg from '../../Img/loading5.gif'
 import SearchBar from "../SearchBar";
 import GamesDetailsModal from "../GameDetailsModal";
 
-const Products = () => {
+const Products = ( {testing} ) => {
     const dispatch = useDispatch();
     const { addToCart } = useCart();
     const { searchResults, list, loading, searchLoading, detailsLoading, error, searchError } = useSelector((state) => state.games);
 
+    // carga los juegos al entrar al componente
     useEffect(() => { 
+        if(testing) return;
         dispatch(fetchGames());
     }, [dispatch]);
 

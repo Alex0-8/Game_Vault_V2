@@ -1,100 +1,173 @@
-🕹️ GameVault (React)
+[English Ver](#english)
 
-GameVault is a work-in-progress application for exploring and managing video games, built with React and Redux Toolkit.
-It serves as a modern, modular replacement for the original HTML+SASS version, now featuring a fully redesigned neon/arcade.
+# 🕹️ GameVault (React)
 
-🔗 Live Demo: [GameVault](https://alex0-8.github.io/Game_Vault_V2/)
+GameVault es una aplicación en desarrollo para **explorar y gestionar videojuegos**, construida con **React** + **Redux Toolkit**.  
+Representa una versión moderna, modular y mucho más mantenible del proyecto original hecho en HTML + SASS, ahora con una estética **neón** completamente rediseñada.
 
-🔹 Current Status
+🔗 **Demo en vivo:** [🕹️ GameVault](https://alex0-8.github.io/Game_Vault_V2/)
 
-- Integrated with the IGDB API to fetch game information.
-- Added backup APIs (RAWG + CheapShark) that automatically take over when the main IGDB server is offline.
-- The app now includes a resilient fallback chain:
-- IGDB (local server)
-- RAWG + CheapShark (for game data and pricing)
-- Local mock generator (as last resort)
-- Fully restyled with a gaming / neon style.
-- Neon orange (#ff9900 / #ff4d00) as the main accent.
-- Added responsive design, optimized layout for mobile and desktop.
-- Hover effects adapted to work differently on desktop and touch devices.
-- Added a search bar component that allows users to find games dynamically.
-- Game detail modal added, showing extended info
+<br>
 
-🚧 Upcoming Improvements
+## 🔹 Estado actual
 
-- Advanced filtering and search functionality.
-- Global cart persistence and optional user authentication.
-- Further UI/UX enhancements and animations for a smoother experience.
-- Expanded game detail pages
+- Integración principal con **IGDB API** (servidor local) para obtener información detallada de videojuegos
+- Sistema **resiliente de fallback** automático entre APIs:
+  1. IGDB (principal)
+  2. RAWG + CheapShark (datos + precios)
+  3. Generador local de datos mock (último recurso)
+- Búsqueda dinámica de juegos con la misma lógica de respaldo
+- Modal de detalle de juego con información extendida
+- Diseño **responsive** optimizado para móvil y escritorio
+- Estilo **neón** renovado y pulido:
+  - Color principal: naranja neón (`#ff9900` → `#ff4d00`)
+  - Mejoras recientes en hover, transiciones, sombras y efectos glow
+  - Adaptación de interacciones hover → touch en dispositivos móviles
+- **Tests unitarios e integración** añadidos con **Jest** + **React Testing Library**
+  - Cobertura de componentes principales, hooks y flujos críticos
+  - Tests de renderizado, interacción y accesibilidad básica
 
-⚙️ Tech Stack
+<br>
 
-- Frontend: React, Redux Toolkit, Styled Components
-- Styling: SASS/SCSS
-- APIs: IGDB (local), RAWG, CheapShark
-- Other: Axios for API calls, custom hooks, localStorage cart handling
-- Deployment: GitHub Pages
+## 🚧 Próximas mejoras planeadas
 
-🧩 Architecture Notes
+- Filtros avanzados y búsqueda mejorada (género, plataforma, año, precio, etc.)
+- Autenticación opcional de usuario
+- Animaciones más fluidas y micro-interacciones
+- Mejora de cobertura de tests
 
-The fetchGames thunk implements a multi-layer API fallback:
-- If IGDB fails → attempts to fetch data from RAWG.
-- Then fetches pricing from CheapShark.
-- If both fail, it generates fake prices and discounts locally to keep the UI consistent.
+<br>
 
-The fetchSearchResults thunk powers the search bar with the same fallback logic, ensuring seamless functionality even when external APIs are unavailable.
+## ⚙️ Stack Tecnológico
 
-The new game modal reuses global styles, keeping consistent typography, neon accents, and glowing button effects across all components.
+| Categoría         | Tecnologías / Herramientas                              |
+|-------------------|-----------------------------------------------------------------|
+| Frontend          | React, Redux Toolkit, React Hooks                              |
+| Estilos           | SASS/SCSS + Styled Components                                  |
+| Testing           | **Jest**, **React Testing Library**, jest-dom                  |
+| APIs              | IGDB (local), RAWG, CheapShark                                 |
+| HTTP              | Axios                                                          |
+| Almacenamiento    | localStorage (carrito)                                         |
+| Despliegue        | GitHub Pages                                                   |
+|
 
-Last updated: November 05, 2025
+<br>
 
---------------------------------------------------------------------------------------------
+## 🧩 Notas de arquitectura importantes
 
-🕹️ GameVault (React)
+- **fetchGames** y **fetchSearchResults** (thunks) implementan la cadena de fallback completa
+- Si IGDB falla → RAWG → CheapShark → datos mock locales (precios y descuentos falsos)
+- El modal de detalles reutiliza estilos globales → tipografía, neón, botones glowing y sombras consistentes
+- Los tests con **React Testing Library** se centran en comportamiento del usuario:
+  - ¿Se renderiza correctamente?
+  - ¿Responde a clics y escritura?
+  - ¿Muestra estados de carga/error/fallback?
 
-GameVault es una aplicación en desarrollo para explorar y gestionar videojuegos, construida con React y Redux Toolkit.
-Es una versión moderna y modular del proyecto original hecho en HTML+SASS, ahora con una estética tipo neón / arcade completamente rediseñada.
+<br>
 
-🔗 Versión en línea: [GameVault](https://alex0-8.github.io/Game_Vault_V2/)
+## 🛠️ Comandos principales
 
-🔹 Estado Actual
+```bash
+# Instalar dependencias
+npm install
 
-- Integración con la API de IGDB para obtener información de videojuegos.
-- Se añadieron APIs de respaldo (RAWG + CheapShark) que se activan automáticamente cuando el servidor principal no responde.
-- El sistema de carga usa una cadena de respaldo:
-- IGDB (servidor local)
-- RAWG + CheapShark (para datos y precios)
-- Generador local de tarjetas (último recurso)
-- Se aplicó un nuevo diseño visual estilo gaming / neón:
-- Naranja neón (#ff9900 / #ff4d00) como color principal.
-- Se añadió diseño responsive y ajustes de hover adaptados a PC y dispositivos móviles.
-- Nuevo componente de barra de búsqueda, que permite encontrar juegos dinámicamente
-- Modal de detalles del juego
+# Iniciar en modo desarrollo
+npm start
 
-🚧 Próximas Mejoras
+# Ejecutar tests (modo watch)
+npm test
 
-- Búsqueda y filtrado avanzado en el catálogo.
-- Persistencia global del carrito y posible autenticación de usuario.
-- Más mejoras de UI/UX y animaciones para una experiencia más fluida.
-- Páginas de detalles más completas
+# Ejecutar tests + coverage
+npm test -- --coverage
 
-⚙️ Stack Tecnológico
+# Build de producción
+npm run build
+```
+Ultima actualizacion importante: 21/Enero/2026
 
-- Frontend: React, Redux Toolkit, Styled Components
-- Estilos: SASS/SCSS
-- APIs: IGDB (local), RAWG, CheapShark
-- Otros: Axios, hooks personalizados, manejo de carrito con localStorage
-- Despliegue: GitHub Pages
+# English
+# 🕹️ GameVault (React)
 
-🧩 Notas Técnicas
+GameVault is a work-in-progress application for **exploring and managing video games**, built with **React** + **Redux Toolkit**.  
+It is a modern, modular, and much more maintainable version of the original project built with HTML + SASS, now featuring a completely redesigned **neon** aesthetic.
 
-El thunk fetchGames implementa una cadena de respaldo entre APIs:
-- Si IGDB falla → intenta obtener datos desde RAWG.
-- Luego busca precios en CheapShark.
-- Si ambas fallan, genera precios y descuentos falsos localmente para mantener la interfaz funcional.
+🔗 **Live Demo:** [🕹️ GameVault](https://alex0-8.github.io/Game_Vault_V2/)
 
-El thunk fetchSearchResults impulsa la barra de búsqueda con la misma lógica de respaldo, garantizando que siga funcionando incluso sin conexión al servidor principal
+<br>
 
-El nuevo modal de detalles del juego mantiene la coherencia visual con los componentes principales, reutilizando tipografía, efectos de neón y sombras brillantes.
+## 🔹 Current Status
 
-Última actualización: 05 de Noviembre de 2025
+- Main integration with **IGDB API** (local server) for detailed game information
+- Resilient **automatic fallback system** between APIs:
+  1. IGDB (primary)
+  2. RAWG + CheapShark (data + pricing)
+  3. Local mock data generator (last resort)
+- Dynamic game search powered by the same fallback logic
+- Game detail modal with extended information
+- **Responsive design** optimized for mobile and desktop
+- Renewed and polished **neon/arcade** style:
+  - Primary color: neon orange (`#ff9900` → `#ff4d00`)
+  - Recent improvements in hover effects, transitions, shadows, and glows
+  - Hover interactions adapted to touch on mobile devices
+- **Unit and integration tests** added with **Jest** + **React Testing Library**
+  - Coverage of main components, hooks, and critical flows
+  - Tests for rendering, user interactions, and basic accessibility
+
+<br>
+
+## 🚧 Planned Improvements
+
+- Advanced filters and enhanced search (genre, platform, year, price, etc.)
+- Optional user authentication
+- Smoother animations and micro-interactions
+- Improve test coverage
+
+<br>
+
+## ⚙️ Tech Stack
+
+| Category          | Technologies / Tools                                           |
+|-------------------|----------------------------------------------------------------|
+| Frontend          | React, Redux Toolkit, React Hooks                              |
+| Styling           | SASS/SCSS + Styled Components                                  |
+| Testing           | **Jest**, **React Testing Library**, jest-dom                  |
+| APIs              | IGDB (local), RAWG, CheapShark                                 |
+| HTTP              | Axios                                                          |
+| Storage           | localStorage (cart)                                            |
+| Deployment        | GitHub Pages                                                   |
+|
+
+<br>
+
+## 🧩 Key Architecture Notes
+
+- fetchGames and **fetchSearchResults** thunks implement the full fallback chain
+- If IGDB fails → RAWG → CheapShark → local mock data (fake prices and discounts)
+- The game detail modal reuses global styles for consistency: typography, neon accents, glowing buttons, and shadows
+- **React Testing Library** tests focus on user behavior:
+  - Does it render correctly?
+  - Does it respond to clicks and typing?
+  - Does it handle loading/error/fallback states properly?
+
+<br>
+
+## 🛠️ Main Commands
+
+```bash
+# Install dependencies
+npm install
+
+# Start in development mode
+npm start
+
+# Run tests (watch mode)
+npm test
+
+# Run tests with coverage
+npm test -- --coverage
+
+# Build for production
+npm run build
+```
+
+Last major update: January/21/2026

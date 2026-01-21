@@ -19,7 +19,7 @@ const SearchBar = () => {
 
     return (
         <SearchWrapper>
-            <IconButton onClick={toggleSearch}>
+            <IconButton onClick={toggleSearch} aria-label="open-searchBar">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </IconButton>
 
@@ -30,7 +30,7 @@ const SearchBar = () => {
                     placeholder="Buscar juegos"
                     onChange={(e) => setQuery(e.target.value)}
                 />
-                <SubmitButton type="submit"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></SubmitButton>
+                <SubmitButton type="submit" aria-label="searchGame"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></SubmitButton>
         </SearchContainer>
         </SearchWrapper>
     )
