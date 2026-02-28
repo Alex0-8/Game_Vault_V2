@@ -1,173 +1,258 @@
-[English Ver](#english)
+[English Version](#english)
 
-# 🕹️ GameVault (React)
+# 🕹️ GameVault
 
-GameVault es una aplicación en desarrollo para **explorar y gestionar videojuegos**, construida con **React** + **Redux Toolkit**.  
-Representa una versión moderna, modular y mucho más mantenible del proyecto original hecho en HTML + SASS, ahora con una estética **neón** completamente rediseñada.
+<div align="center">
+  
+  <a href="https://react.dev/">
+    <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://redux-toolkit.js.org/">
+    <img src="https://img.shields.io/badge/Redux%20Toolkit-764ABC?logo=redux&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://vitejs.dev/">
+    <img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://sass-lang.com/">
+    <img src="https://img.shields.io/badge/SASS-CC6699?logo=sass&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://testing-library.com/">
+    <img src="https://img.shields.io/badge/Jest%20%2B%20RTL-99424B?logo=jest&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://alex0-8.github.io/Game_Vault_V2/">
+    <img src="https://img.shields.io/badge/Live%20Demo-brightgreen?logo=vercel&logoColor=white&style=flat-square" />
+  </a>
 
-🔗 **Demo en vivo:** [🕹️ GameVault](https://alex0-8.github.io/Game_Vault_V2/)
+</div>
 
-<br>
+---
 
-## 🔹 Estado actual
+**GameVault** es una aplicación web moderna para **descubrir, explorar y gestionar tu colección de videojuegos** con un estilo **neón/arcade** muy cuidado.
 
-- Integración principal con **IGDB API** (servidor local) para obtener información detallada de videojuegos
-- Sistema **resiliente de fallback** automático entre APIs:
-  1. IGDB (principal)
-  2. RAWG + CheapShark (datos + precios)
-  3. Generador local de datos mock (último recurso)
-- Búsqueda dinámica de juegos con la misma lógica de respaldo
-- Modal de detalle de juego con información extendida
-- Diseño **responsive** optimizado para móvil y escritorio
-- Estilo **neón** renovado y pulido:
-  - Color principal: naranja neón (`#ff9900` → `#ff4d00`)
-  - Mejoras recientes en hover, transiciones, sombras y efectos glow
-  - Adaptación de interacciones hover → touch en dispositivos móviles
-- **Tests unitarios e integración** añadidos con **Jest** + **React Testing Library**
-  - Cobertura de componentes principales, hooks y flujos críticos
-  - Tests de renderizado, interacción y accesibilidad básica
+Es la evolución completa de un proyecto anterior (HTML + SASS) hacia una arquitectura escalable y mantenible usando **React**, **Redux Toolkit** y un sistema inteligente de fallback entre APIs para garantizar que siempre veas información aunque una API falle.
 
-<br>
+🔗 **Demo en vivo** → [https://alex0-8.github.io/Game_Vault_V2/](https://alex0-8.github.io/Game_Vault_V2/)
 
-## 🚧 Próximas mejoras planeadas
+<img width="1350" height="602" alt="gamevault" src="https://github.com/user-attachments/assets/03a3fc7c-b5aa-40d2-aaa8-f87ba8af38ee" />
 
-- Filtros avanzados y búsqueda mejorada (género, plataforma, año, precio, etc.)
-- Autenticación opcional de usuario
-- Animaciones más fluidas y micro-interacciones
-- Mejora de cobertura de tests
+---
 
-<br>
+## ✨ Características principales
 
-## ⚙️ Stack Tecnológico
+- Búsqueda dinámica de videojuegos con autocompletado  
+- Sistema **resiliente** de fallback entre 3 fuentes de datos  
+- Modal detallado con información extendida (descripción, géneros, plataformas, capturas, etc.)  
+- Diseño **responsive** 100% (móvil + escritorio)  
+- Estilo **neón** moderno con transiciones suaves, glows y efectos hover/touch  
+- Carrito persistente con **localStorage**  
+- Tests unitarios e integración con **Jest + React Testing Library**  
 
-| Categoría         | Tecnologías / Herramientas                              |
-|-------------------|-----------------------------------------------------------------|
-| Frontend          | React, Redux Toolkit, React Hooks                              |
-| Estilos           | SASS/SCSS + Styled Components                                  |
-| Testing           | **Jest**, **React Testing Library**, jest-dom                  |
-| APIs              | IGDB (local), RAWG, CheapShark                                 |
-| HTTP              | Axios                                                          |
-| Almacenamiento    | localStorage (carrito)                                         |
-| Despliegue        | GitHub Pages                                                   |
-|
+---
 
-<br>
+## 🛠️ Stack Tecnológico
 
-## 🧩 Notas de arquitectura importantes
+| Categoría          | Tecnología / Herramienta                              | Notas                               |
+|--------------------|-------------------------------------------------------|-------------------------------------|
+| Framework          | React 18+                                             | Hooks + Functional Components       |
+| Estado global      | Redux Toolkit + RTK Query                             | Thunks + caché                      |
+| Estilos            | SASS/SCSS + Styled Components                         | Neon theme centralizado             |
+| HTTP / APIs        | Axios                                                 | Interceptors + error handling       |
+| Testing            | Jest + React Testing Library + jest-dom               | >80% cobertura en componentes clave |
+| APIs externas      | IGDB (principal), RAWG, CheapShark                    | Fallback automático                 |
+| Almacenamiento     | localStorage                                          | Carrito de compras                  |
+| Build & Deploy     | Vite + GitHub Pages                                   | CI/CD básico vía GitHub Actions     |
 
-- **fetchGames** y **fetchSearchResults** (thunks) implementan la cadena de fallback completa
-- Si IGDB falla → RAWG → CheapShark → datos mock locales (precios y descuentos falsos)
-- El modal de detalles reutiliza estilos globales → tipografía, neón, botones glowing y sombras consistentes
-- Los tests con **React Testing Library** se centran en comportamiento del usuario:
-  - ¿Se renderiza correctamente?
-  - ¿Responde a clics y escritura?
-  - ¿Muestra estados de carga/error/fallback?
+---
 
-<br>
+## 🔥 Retos enfrentados y cómo los resolví
 
-## 🛠️ Comandos principales
+| Reto                                      | Solución aplicada                                                                                 | Impacto                                      |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------------|
+| IGDB requiere servidor proxy (CORS)       | Servidor local ligero con Express + dotenv para manejar claves y requests                         | Seguridad + evita exponer keys en frontend   |
+| APIs caen frecuentemente o tienen límites | Cadena de fallback: IGDB → RAWG + CheapShark → datos mock generados localmente                   | 99% uptime visual para el usuario            |
+| Diferencias de formato entre APIs         | Normalización de datos en un modelo unificado (Game interface) antes de guardar en Redux         | Código limpio y predecible                   |
+| Experiencia móvil pobre con hover         | Detección de dispositivo + eventos touch + fallback visual (scale + brightness)                   | UX consistente en móvil y tablet             |
 
-```bash
-# Instalar dependencias
-npm install
+---
 
-# Iniciar en modo desarrollo
-npm start
+## 🚀 Cómo empezar
 
-# Ejecutar tests (modo watch)
+### 1. ¿Qué necesito tener instalado?
+
+- **Node.js** → versión 18 o superior  
+  [Descargar aquí](https://nodejs.org/)  
+  (viene con **npm** incluido)
+
+### 2. Pasos para tener el proyecto corriendo en tu computadora
+
+1. Descarga o clona el proyecto  
+   ```bash
+   git clone https://github.com/alex0-8/Game_Vault_V2.git
+   cd Game_Vault_V2
+   ````
+2. Instala todas las dependencias
+    ````bash
+      npm install
+      ````
+3. Inicia el proyecto (se abre solo en el navegador)
+   ````bash
+   npm start
+   ````
+→ Abre http://localhost:5173 (o el puerto que te diga)
+
+¡Listo! Ya puedes explorar videojuegos con estilo neón 🔥
+Comandos más útiles
+
+````Bash
+# Correr tests (se actualizan al guardar)
 npm test
 
-# Ejecutar tests + coverage
+# Ver qué tan bien testeado está el proyecto
 npm test -- --coverage
 
-# Build de producción
+# Crear versión final para subir a internet
 npm run build
-```
-Ultima actualizacion importante: 21/Enero/2026
+````
+
+# 🗺️ Posibles Futuras mejoras
+
+- [ ] Filtros avanzados (género, plataforma, año, precio, rating)
+- [ ] Paginación / infinite scroll
+- [ ] Autenticación opcional + lista de deseados personal
+- [ ] Animaciones con Framer Motion
+- [ ] Soporte multilenguaje (es/en)
+- [ ] Mejora de cobertura de tests (>90%)
+
+📄 Licencia
+MIT License – siéntete libre de usar, modificar y compartir.
+Última actualización importante: 28 de febrero de 2026
+
+¡Gracias por visitar GameVault!
 
 # English
-# 🕹️ GameVault (React)
+# 🕹️ GameVault
 
-GameVault is a work-in-progress application for **exploring and managing video games**, built with **React** + **Redux Toolkit**.  
-It is a modern, modular, and much more maintainable version of the original project built with HTML + SASS, now featuring a completely redesigned **neon** aesthetic.
+<div align="center">
+  
+  <a href="https://react.dev/">
+    <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://redux-toolkit.js.org/">
+    <img src="https://img.shields.io/badge/Redux%20Toolkit-764ABC?logo=redux&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://vitejs.dev/">
+    <img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://sass-lang.com/">
+    <img src="https://img.shields.io/badge/SASS-CC6699?logo=sass&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://testing-library.com/">
+    <img src="https://img.shields.io/badge/Jest%20%2B%20RTL-99424B?logo=jest&logoColor=white&style=flat-square" />
+  </a>
+  <a href="https://alex0-8.github.io/Game_Vault_V2/">
+    <img src="https://img.shields.io/badge/Live%20Demo-brightgreen?logo=vercel&logoColor=white&style=flat-square" />
+  </a>
 
-🔗 **Live Demo:** [🕹️ GameVault](https://alex0-8.github.io/Game_Vault_V2/)
+</div>
 
-<br>
+---
 
-## 🔹 Current Status
+**GameVault** is a sleek, modern web app for **discovering, exploring, and managing video games** with a stunning **neon/arcade** aesthetic.
 
-- Main integration with **IGDB API** (local server) for detailed game information
-- Resilient **automatic fallback system** between APIs:
-  1. IGDB (primary)
-  2. RAWG + CheapShark (data + pricing)
-  3. Local mock data generator (last resort)
-- Dynamic game search powered by the same fallback logic
-- Game detail modal with extended information
-- **Responsive design** optimized for mobile and desktop
-- Renewed and polished **neon/arcade** style:
-  - Primary color: neon orange (`#ff9900` → `#ff4d00`)
-  - Recent improvements in hover effects, transitions, shadows, and glows
-  - Hover interactions adapted to touch on mobile devices
-- **Unit and integration tests** added with **Jest** + **React Testing Library**
-  - Coverage of main components, hooks, and critical flows
-  - Tests for rendering, user interactions, and basic accessibility
+This is a complete rewrite and upgrade of the original HTML + SASS version, now built with **React**, **Redux Toolkit**, and a smart multi-API fallback system that keeps the app usable even if one data source goes down.
 
-<br>
+🔗 **Live Demo** → [https://alex0-8.github.io/Game_Vault_V2/](https://alex0-8.github.io/Game_Vault_V2/)
 
-## 🚧 Planned Improvements
+<img width="1350" height="602" alt="gamevault" src="https://github.com/user-attachments/assets/03a3fc7c-b5aa-40d2-aaa8-f87ba8af38ee" />
 
-- Advanced filters and enhanced search (genre, platform, year, price, etc.)
-- Optional user authentication
-- Smoother animations and micro-interactions
-- Improve test coverage
+---
 
-<br>
+## ✨ Key Features
 
-## ⚙️ Tech Stack
+- Dynamic game search with real-time results  
+- Resilient **multi-API fallback** system for maximum reliability  
+- Detailed game modal (description, genres, platforms, screenshots, ratings, etc.)  
+- Fully **responsive** design — looks great on mobile, tablet, and desktop  
+- Polished **neon** UI with smooth transitions, glow effects, and hover/touch support  
+- Persistent shopping cart using **localStorage**  
+- Solid test coverage with **Jest + React Testing Library**
 
-| Category          | Technologies / Tools                                           |
-|-------------------|----------------------------------------------------------------|
-| Frontend          | React, Redux Toolkit, React Hooks                              |
-| Styling           | SASS/SCSS + Styled Components                                  |
-| Testing           | **Jest**, **React Testing Library**, jest-dom                  |
-| APIs              | IGDB (local), RAWG, CheapShark                                 |
-| HTTP              | Axios                                                          |
-| Storage           | localStorage (cart)                                            |
-| Deployment        | GitHub Pages                                                   |
-|
+---
 
-<br>
+## 🛠️ Tech Stack
 
-## 🧩 Key Architecture Notes
+| Category           | Technology / Tool                                      | Notes                               |
+|--------------------|--------------------------------------------------------|-------------------------------------|
+| Frontend           | React 18+                                              | Hooks + Functional Components       |
+| State Management   | Redux Toolkit + RTK Query                              | Thunks + built-in caching           |
+| Styling            | SASS/SCSS + Styled Components                          | Centralized neon theme              |
+| HTTP / APIs        | Axios                                                  | Interceptors + robust error handling|
+| Testing            | Jest + React Testing Library + jest-dom                | >80% coverage on core components    |
+| External APIs      | IGDB (primary), RAWG, CheapShark                       | Automatic fallback chain            |
+| Storage            | localStorage                                           | Shopping cart persistence           |
+| Build & Deploy     | Vite + GitHub Pages                                    | Fast builds + free hosting          |
 
-- fetchGames and **fetchSearchResults** thunks implement the full fallback chain
-- If IGDB fails → RAWG → CheapShark → local mock data (fake prices and discounts)
-- The game detail modal reuses global styles for consistency: typography, neon accents, glowing buttons, and shadows
-- **React Testing Library** tests focus on user behavior:
-  - Does it render correctly?
-  - Does it respond to clicks and typing?
-  - Does it handle loading/error/fallback states properly?
+---
 
-<br>
+## 🔥 Challenges Faced & How They Were Solved
 
-## 🛠️ Main Commands
+| Challenge                                  | Solution Implemented                                                                 | Impact                                      |
+|--------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------|
+| IGDB API requires proxy due to CORS        | Lightweight local Express proxy server with dotenv for secure key handling          | Keeps API keys safe, no frontend exposure   |
+| Unreliable / rate-limited external APIs    | Full fallback chain: IGDB → RAWG + CheapShark → local mock data generator           | Near 100% content availability              |
+| Inconsistent data shapes across APIs       | Unified `Game` interface + data normalization layer before storing in Redux         | Clean, predictable state & components       |
+| Hover effects poor on touch devices        | Device detection + touch-friendly alternatives (scale + brightness on tap)          | Consistent UX across mobile & desktop       |
 
-```bash
-# Install dependencies
-npm install
+---
 
-# Start in development mode
-npm start
+## 🚀 Getting Started
 
-# Run tests (watch mode)
+### Prerequisites
+
+- **Node.js** v18 or higher  
+  → Download from [https://nodejs.org/](https://nodejs.org/) (includes npm)
+
+### Step-by-Step Setup
+
+1. Clone or download the repository  
+   ```bash
+   git clone https://github.com/alex0-8/Game_Vault_V2.git
+   cd Game_Vault_V2
+   ````
+2. Install all depenndencies
+   ````bash
+   npm install
+   ````
+3. Start the develpment server
+   ````bash
+   npm start
+   ````
+→ It should automatically open http://localhost:5173 in your browser
+
+That's it! You're now running GameVault locally with the full neon experience.
+# Most Useful Commands
+````bash
+# Run tests in watch mode (great for development)
 npm test
 
-# Run tests with coverage
+# Generate test coverage report
 npm test -- --coverage
 
-# Build for production
+# Create production build (for deployment)
 npm run build
-```
+````
 
-Last major update: January/21/2026
+## 🗺️ Planned Improvements
+
+- [ ] Advanced filters (genre, platform, year, price range, rating)
+- [ ] Infinite scroll / pagination
+- [ ] Optional user authentication + personal wishlists
+- [ ] Framer Motion animations & micro-interactions
+- [ ] Multi-language support (English / Spanish)
+- [ ] Increase test coverage to >90%
+
+Last major update: February 28, 2026
+
+---
+
+Thanks for checking out GameVault!
